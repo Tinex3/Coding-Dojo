@@ -25,15 +25,29 @@ function hello() {
 
 //codigo 4
 
-var num = 15;
-console.log(num);
+var num = 15; // iniciamos una variable con el valor de 15
+console.log(num); //imprimimos el valor de num  (15)
 function logAndReturn(num2){
- console.log(num2);
- return num2;
+ console.log(num2); //Se imprime el valor de num2
+ return num2;//se retorna el valor 
 }
-var result = logAndReturn(10);
-console.log(result);
-console.log(num);
+var result = logAndReturn(10);//llamamos a la funcion logAndReturn 
+console.log(result); // se imprime en consola el valor de result (10)
+console.log(num);//se imprime en consola el valor de num(15)
+
+//codigo 5
+
+var num = 15;
+console.log(num);//se imprime en consola el valor de 15
+function timesTwo(num2){
+ console.log(num2);//se imprime el valor inicial que hace result (equivalente a 10)
+ return num2*2; //retorna el valor inicial de 10 multiplicado por 2, quedando en 20
+}
+var result = timesTwo(10)//se llama a la funcion timesTwo con el valor inicial de 10;
+console.log(result);//imprime el valor de 20
+console.log(num);//imprime el valor de 15
+
+
 
 
 
