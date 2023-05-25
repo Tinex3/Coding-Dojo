@@ -47,7 +47,48 @@ var result = timesTwo(10)//se llama a la funcion timesTwo con el valor inicial d
 console.log(result);//imprime el valor de 20
 console.log(num);//imprime el valor de 15
 
+//codigo 6
+
+function timesTwoAgain(num) {
+    console.log('num is', num);//en el primer llamado se escribe "num is 3", en el segundo "num is 5"
+    var y = num*2;//se multiplica el valor de num y se guarda en y, en el primer caso quedaria 3*2 y en el segundo 5*2
+    return y;//se devuelve el valor de y como resultado de la funcion
+   }
+   var result = timesTwoAgain(3) + timesTwoAgain(5); // hace el llamado dos veces a la funciom timeTwoAgain, la primera con el valor de 3 y la segunda con el valor de 5;
+   console.log('result is', result);//se imprime en consola "result is 16"
 
 
+//codigo 7
+function sumNums(num1, num2) {
+    return num1+num2;
+   }
 
+console.log(sumNums(2,3))//se llama a la funcion sumnum y se suman nmr1 y nmr2(5) 
+console.log(sumNums(3,5))//se llama a la funcion sumnum y se suman nuevamente num1 y num2 (8 )
 
+//codigo 8
+function printSumNums(num1, num2) {
+    console.log(num1);//imprime el primer valor del primer llamado y el segundo del segundo llamado
+    return num1+num2;//retorna la suma de los numeros de cada llamado a la funcion
+   }
+   console.log(printSumNums(2,3))//llama a la funcion para imprimir el valor de return con los valores 2,3
+   console.log(printSumNums(3,5))//imprime en consola el valor del del return de la funcion
+//codigo 9
+
+function sumNums(num1, num2) {
+    var sum = num1 + num2; //suma los dos valores que se entregan a la funcion
+    console.log('sum is', sum); // imprime en consola "sum is el valor de la suma"
+    return sum; //retorna el valor de sum 
+   }
+   var result = sumNums(2,3) + sumNums(3,5);//asigna el valor de result como la suma de los return de la funcion sumNums
+   console.log('result is', result);//se imprime en consola "result is 13" 
+
+   //codigo 10
+   function sumNums(num1, num2) {
+    var sum = num1 + num2;
+    console.log('sum is', sum);
+    return sum;
+   }
+   var result = sumNums(2,3) + sumNums(3,sumNums(2,1)) + sumNums(sumNums(2,1),sumNums(2,3)); /*se llama a la funcion
+   retirada veces cb¿on diversos valores para sumarlos entre si*/
+   console.log('result is', result); //consola imprime el valor de "result is 19"
