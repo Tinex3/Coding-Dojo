@@ -1,33 +1,57 @@
 <html>
-<body style="background-image: url('img/imagen.jpg');">
-	<div id='background'>
+<body style="-webkit-tap-highlight-color: aqua;">
+    <div id='background'>
         <div id='character' style='position:absolute; top:100px; left:450px; background-image: url("img/down1.png"); width:59px; height:86px;'></div>
+        <div id='bullet' style='display: none; position:absolute; top:0; left:0; background-image: url("img/bullet.j"); width:10px; height:10px;'></div>
     </div>
     <script type="text/javascript">
-	    var leftValue = 450, topValue = 100;
+        var leftValue = 450, topValue = 100;
+        var bulletLeftValue = 0, bulletTopValue = 0;
+        var isBulletActive = false;
 
-    	function update(){
-    		document.getElementById("character").style.left = leftValue+"px";
-    		document.getElementById("character").style.top = topValue+"px";
-    	}
+        function update() {
+            document.getElementById("character").style.left = leftValue + "px";
+            document.getElementById("character").style.top = topValue + "px";
+            document.getElementById("bullet").style.left = bulletLeftValue + "px";
+            document.getElementById("bullet").style.top = bulletTopValue + "px";
+        }
 
-    	document.onkeydown = function(e){
-    		console.log(e);
-    		if(e.keyCode == 37) { // LEFT
-    			leftValue = leftValue - 10;
-    		}
-    		else if (e.keyCode == 39) { // RIGHT
-    			leftValue = leftValue + 10;    		
-    		}
-    		else if (e.keyCode == 40) { // DOWN
-				topValue = topValue + 10;
-    		}
-			else if(e.keyCode  ==38){
-				topValue = topValue-10;
-			}
-    		
-    		update();
-    	}
+        function shoot() {
+            if (!isBulletActive) {
+                isBulletActive = true;
+                bulletLeftValue = leftValue + 24; // Position the bullet relative to the ninja
+                bulletTopValue = topValue + 43;
+                document.getElementById("bullet").style.display = "block";
+
+                var bulletInterval = setInterval(function () {
+                    bulletTopValue -= 10; // Move the bullet up
+                    document.getElementById("bullet").style.top = bulletTopValue + "px";
+
+                    if (bulletTopValue < -10) {
+                        clearInterval(bulletInterval);
+                        document.getElementById("bullet").style.display = "none";
+                        isBulletActive = false;
+                    }
+                }, 50);
+            }
+        }
+
+        document.onkeydown = function (e) {
+            console.log(e);
+            if (e.keyCode == 37) { // LEFT
+                leftValue -= 10;
+            } else if (e.keyCode == 39) { // RIGHT
+                leftValue += 10;
+            } else if (e.keyCode == 40) { // DOWN
+                topValue += 10;
+            } else if (e.keyCode == 38) { // UP
+                topValue -= 10;
+            } else if (e.keeyCode == 32) { // SPACE (Shoot)
+                shoot();
+            }
+
+            update();
+        }
     </script>
 </body>
 </html>
